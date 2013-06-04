@@ -24,9 +24,11 @@ def index():
 		seconds_ago = r.GetCreatedAtInSeconds()
 		hours_ago = ConvertTime(seconds_ago)
 		source_url = r.GetSource()
+		print source_url
 		screenname = user.GetScreenName()
 		image = user.GetProfileImageUrl()
-		tweet = {"text": text, "hours_ago":hours_ago, "screenname": screenname}
+		tweet = {"text": text, "hours_ago":hours_ago, "screenname": screenname, 
+				"img": image, "view_tweet": source_url}
 		tweets.append(tweet)
 	return render_template("index.html", tweets = tweets)
 
@@ -48,11 +50,14 @@ def database():
 		source_url = r.GetSource()
 		screenname = user.GetScreenName()
 		image = user.GetProfileImageUrl()
-		tweet = {"text": text, "hours_ago":hours_ago, "screenname": screenname}
+		tweet = {"text": text, "hours_ago":hours_ago, "screenname": screenname, 
+				"img": image, "view_tweet": source_url}
 		tweets.append(tweet)
 		#Add each tweet to database.
 		t = Tweet( author= screenname, body = text, is_read = False )
 		db.session.add(t)
+	for t in tweets:
+		print t 
 	db.session.commit()
 	return "Connected to db. Check db."
 

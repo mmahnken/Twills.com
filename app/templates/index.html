@@ -21,9 +21,10 @@
         {% for t in tweets %}
         <tr>
         <td><input type = "checkbox"></td>
-        <td>{{t["text"]}}</td>
-        <td>{{t["hours_ago"]}}</td>
-
+        <td><img src="{{t["img"]}}"></td>
+        <td><b>{{t["screenname"]}}</b>: {{t["text"]}}
+        <br>{{t["hours_ago"]}} <a href="{{t["view_tweet"]}}">View Tweet</a></td>
+        </tr>
         {% endfor %}
     </div>
 </body>
