@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Twills.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="../static/flatUI/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="../static/flatUI/flat-ui.css" rel="stylesheet">
+<!-- replace favicon.ico with a new image.-->
+    <link rel="shortcut icon" href="../static/flatUI/images/favicon.ico">
+</head>
+<body>
+    <h1>Twills.com</h1>
+    <div class="container">
+        <table>
+        {% for t in tweets %}
+        <tr>
+        <td><input type = "checkbox"></td>
+        <td>{{t["text"]}}</td>
+        <td>{{t["hours_ago"]}}</td>
+
+        {% endfor %}
+    </div>
+</body>
+<script>
+
+</html>
