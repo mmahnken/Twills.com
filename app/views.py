@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, session, url_for, request
 from app import app, db
 import twitter
-from twitter import Api, Status
+from twitter import Api, Status, User 
 import time
 from models import Tweet
 #import other necessary files
@@ -30,8 +30,8 @@ def index():
 		tweets.append(tweet)
 	return render_template("index.html", tweets = tweets)
 
-@app.route('/db')
-def db():
+@app.route('/database')
+def database():
 	search_term = "bills.com"
 	print search_term
 	api = Api(consumer_key='uy3Utit3PhWPmM5284sh7w',
@@ -54,7 +54,7 @@ def db():
 		t = Tweet( author= screenname, body = text, is_read = False )
 		db.session.add(t)
 	db.session.commit()
-	return render_template("index.html", )
+	return "Connected to db. Check db."
 
 def ConvertTime(epoch):
 	return time.strftime('About %H hours ago', time.gmtime(epoch))
